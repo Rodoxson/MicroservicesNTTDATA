@@ -1,0 +1,26 @@
+server:
+  port: 8700
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: produtos
+          uri: lb://PRODUTOS-SERVICE
+          predicates:
+            - Path=/produtos/**
+        - id: pedidos
+          uri: lb://PEDIDOS-SERVICE
+          predicates:
+            - Path=/pedidos/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true   # <--- força o uso de IP em vez de hostname
