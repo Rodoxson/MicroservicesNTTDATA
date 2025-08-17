@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "Microservices NTTDATA",
+    "_postman_id": "f23c34d3-12c8-4a4f-b678-2a1e9e123456",
+    "description": "Collection para acessar os microservices via API Gateway",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "Listar Produtos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{gateway_base}}/produtos",
+              "host": ["{{gateway_base}}"],
+              "path": ["produtos"]
+            }
+          }
+        },
+        {
+          "name": "Criar Produto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Teclado Mecânico\",\n  \"descricao\": \"Teclado RGB com switches azuis\",\n  \"preco\": 350.90,\n  \"estoque\": 15\n}"
+            },
+            "url": {
+              "raw": "{{gateway_base}}/produtos",
+              "host": ["{{gateway_base}}"],
+              "path": ["produtos"]
+            }
+          }
+        },
+        {
+          "name": "Deletar Produto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{gateway_base}}/produtos/1",
+              "host": ["{{gateway_base}}"],
+              "path": ["produtos", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Listar Pedidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{gateway_base}}/pedidos",
+              "host": ["{{gateway_base}}"],
+              "path": ["pedidos"]
+            }
+          }
+        },
+        {
+          "name": "Criar Pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cliente\": \"Rodolfo Lima\",\n  \"produtoId\": 1,\n  \"quantidade\": 2\n}"
+            },
+            "url": {
+              "raw": "{{gateway_base}}/pedidos",
+              "host": ["{{gateway_base}}"],
+              "path": ["pedidos"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "gateway_base",
+      "value": "http://localhost:8700"
+    }
+  ]
+}
